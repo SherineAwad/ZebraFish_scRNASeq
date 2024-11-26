@@ -14,6 +14,7 @@ library(rtracklayer)
 args <- commandArgs(trailingOnly = TRUE)
 
 mysample = args[1] 
+#filter first round 
 nRNA1 =  35000
 nRNA2 =  250
 features = 250  

@@ -22,20 +22,26 @@ myObject <- readRDS(myRDS)
 
 DefaultAssay(myObject) <- "RNA"
 
+myObject@meta.data[,'sample']<-apply(as.matrix(rownames(myObject@meta.data)), 1, function(X1){X2<-strsplit(X1,'-')[[1]][2];})
+myObject@meta.data[,'sample'] <- recode(myObject@meta.data[,'sample'], "1" = "S1", "2" = "S2")
+
+
 myObject <- NormalizeData(myObject)
 myObject <- FindVariableFeatures(myObject)
 myObject <- ScaleData(myObject)
 myObject <- RunPCA(myObject)
-myObject <- FindNeighbors(myObject, dims = 1:8)
+myObject <- FindNeighbors(myObject, dims = 1:15)
 myObject <- FindClusters(myObject, resolution = 2.0)
-myObject <- RunUMAP( myObject, dims = 1:8)
+myObject <- RunUMAP( myObject, dims = 1:20)
 
 myObject[["RNA"]] <- JoinLayers(myObject[["RNA"]])
 
+
 figure_name <- ""
-figure_name <- paste(mysample, "_UMAP.pdf", sep="")
+figure_name <- paste(mysample, "_UMAPdim20.pdf", sep="")
 pdf(file =figure_name, width =12)
 DimPlot(myObject, reduction = "umap", group.by = "orig.ident",  repel = TRUE) + ggtitle("UMAP")
+DimPlot(myObject, reduction = "umap", group.by = "sample",  repel = TRUE) + ggtitle("UMAP")
 DimPlot(myObject, reduction = "umap", label=TRUE, repel = TRUE) + ggtitle("UMAP")
 dev.off()
 
