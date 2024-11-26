@@ -23,9 +23,7 @@ myRDS
 
 ## Prepare genome annotation
 annotation <- makeGRangesFromGff("Danio_rerio.GRCz11.105.gtf", level = c("genes", "transcripts"))
-#Need to check why the annotation doesn't work 
-#seqlevelsStyle(annotation) <- "UCSC"
-#unique(seqnames(annotation)) 
+unique(seqnames(annotation)) 
 
 ###load sample, the RNA and ATAC data
 counts <- Read10X_h5(myh5)

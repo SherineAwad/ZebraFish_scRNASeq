@@ -14,7 +14,6 @@ library(rtracklayer)
 args <- commandArgs(trailingOnly = TRUE)
 mysample <- args[1]
 
-#Run on merged 
 myRDS <- paste(mysample, "_analysed.rds", sep="")
 myRDS
 
@@ -30,7 +29,7 @@ genes2 = c("her4.2","her4.2","her4.3","her4.4")
 genes3 = c("dla","dlb","dlc","dld")
 genes4 = c("dll4","jag1b","jag2b","dtx2")
 genes5 = c("dtx4a","dtx4b","mib1","mib2")
-genes6 = c("numb","numbl","clcf1","crlf1a")
+genes6 = c("numb","numbl","clcf1","crlf1a", "Onecut1","Onecut2")
 genes7 = c("lepr","lepa","lepb" ,"mmp9","ascl1a","insm1a","vcx2", "ccnd1", "atoh7", "neurod1", "pax6")
 genes8 = c("her12","sox2","ascl1a","ascl1b","gli1","sfrp2","fgf19", "stat3") 
 genes9 = c("rho","nrl","otx2","crx","guca1b","rom1a","rom1b")

@@ -30,7 +30,7 @@ myObject <- NormalizeData(myObject)
 myObject <- FindVariableFeatures(myObject)
 myObject <- ScaleData(myObject)
 myObject <- RunPCA(myObject)
-myObject <- FindNeighbors(myObject, dims = 1:15)
+myObject <- FindNeighbors(myObject, dims = 1:20)
 myObject <- FindClusters(myObject, resolution = 2.0)
 myObject <- RunUMAP( myObject, dims = 1:20)
 
@@ -44,7 +44,6 @@ DimPlot(myObject, reduction = "umap", group.by = "orig.ident",  repel = TRUE) + 
 DimPlot(myObject, reduction = "umap", group.by = "sample",  repel = TRUE) + ggtitle("UMAP")
 DimPlot(myObject, reduction = "umap", label=TRUE, repel = TRUE) + ggtitle("UMAP")
 dev.off()
-
 
 myRDS <- paste(mysample, "_analysed.rds", sep="")
 saveRDS(myObject, file = myRDS)
