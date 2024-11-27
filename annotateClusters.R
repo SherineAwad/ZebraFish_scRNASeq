@@ -47,7 +47,11 @@ myObject <- RenameIdents(
   "37" = "Rod", 
   
   "13" = "Cone", 
-  "33" = "Cone", 
+  "33" = "Cone",
+  "7" = "Cone", 
+  "17" = "Cone", 
+  "34" = "Cone", 
+  "44" = "Cone",  
 
   "12" = "BC", 
   "18"  = "BC",
