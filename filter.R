@@ -15,19 +15,20 @@ args <- commandArgs(trailingOnly = TRUE)
 
 mysample = args[1] 
 
-nRNA1 = 20000
-nRNA2 = 500 
-features = 500 
-mt = 10 
+nCount1 = 1200
+nCount2 = 30000
+nfeatures1 = 800
+nfeatures2 = 6000
+mt = 20
 
 myRDS = paste(mysample, "_preprocessed.rds", sep="") 
 myRDS
 myObject <- readRDS(myRDS)
 
-myObject <- subset(x = myObject, nCount_RNA < nRNA1 & nCount_RNA > nRNA2 & nFeature_RNA > features  & percent.mt < mt)
+myObject <- subset(myObject, subset = nFeature_RNA > nfeatures1 & nFeature_RNA < nfeatures2 & nCount_RNA > nCount1 & nCount_RNA < nCount2 & percent.mt < mt)
 figure_name <- paste(mysample, "_QC_afterFiltervlnplot.pdf", sep="")
 pdf(file=figure_name, width=12)
-VlnPlot(object = myObject, features = c("nCount_RNA", "nFeature_RNA","percent.mt"),pt.size=0.1, ncol = 6, group.by ="active.ident")
+VlnPlot(object = myObject, features = c("nCount_RNA", "nFeature_RNA","percent.mt"),pt.size=0.1, ncol = 6, group.by ="orig.ident")
 dev.off()
 myRDS <- paste(mysample, "_filtered.rds", sep="") 
 saveRDS(myObject, file = myRDS)
