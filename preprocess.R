@@ -21,15 +21,7 @@ mysample
 myh5
 myRDS
 
-## Prepare genome annotation
-annotation <- makeGRangesFromGff("Danio_rerio.GRCz11.105.gtf", level = c("genes", "transcripts"))
-unique(seqnames(annotation)) 
-
-###load sample, the RNA and ATAC data
 counts <- Read10X_h5(myh5)
-# Check counts
-lapply(counts, dim)
-lapply(counts, class)
 
 # create a Seurat object containing the RNA adata
 myObject <- CreateSeuratObject(counts = counts,assay = "RNA", project=mysample)
