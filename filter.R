@@ -11,19 +11,19 @@ set.seed(1234)
 library(AcidGenomes)
 library(rtracklayer)
 
-args <- commandArgs(trailingOnly = TRUE)
-
-mysample = args[1] 
-
 nCount1 = 1200
 nCount2 = 30000
 nfeatures1 = 800
 nfeatures2 = 6000
 mt = 20
 
-myRDS = paste(mysample, "_preprocessed.rds", sep="") 
-myRDS
-myObject <- readRDS(myRDS)
+args <- commandArgs(trailingOnly = TRUE)
+myRDS <- args[1]
+
+split_string <- strsplit(myRDS, "_")[[1]]
+mysample <- split_string[1]
+print(mysample)
+
 
 myObject <- subset(myObject, subset = nFeature_RNA > nfeatures1 & nFeature_RNA < nfeatures2 & nCount_RNA > nCount1 & nCount_RNA < nCount2 & percent.mt < mt)
 figure_name <- paste(mysample, "_QC_afterFiltervlnplot.pdf", sep="")

@@ -12,11 +12,17 @@ library(AcidGenomes)
 library(rtracklayer)
 
 args <- commandArgs(trailingOnly = TRUE)
-mysample <- args[1]
+myRDS <- args[1]
+split_string <- strsplit(myRDS, '_')[[1]]
+mysample <- split_string[1]
+print(mysample) 
 
-myRDS <- paste(mysample, "_analysed.rds", sep="")
-myRDS
-
+suffix=""
+if (substring_exists <- grepl("subset", myRDS) )
+{
+suffix= "S"
+}
+print(suffix) 
 myObject <- readRDS(myRDS)
 
 DefaultAssay(myObject) <- "RNA"
@@ -41,7 +47,7 @@ genes14 = c("nefla", "neflb", "nefma","nefmb","sncga","sncgb","thy1","ebf3a","rb
 genes15 = c("ptprc", "csf2rb", "csf1ra")
 genes16 = c("pax2a","pax2b","igf2a", "igf2b","gfap") 
 figure_name <- ""
-figure_name <- paste(mysample, "_markers.pdf", sep="")
+figure_name <- paste(mysample, "_markers.pdf", sep=suffix)
 pdf(file =figure_name, width=20)
 FeaturePlot(myObject , features =genes1, reduction = "umap", cols = c("lightgrey", "red"), pt.size = 0.1, order =TRUE)
 FeaturePlot(myObject , features =genes2, reduction = "umap", cols = c("lightgrey", "red"), pt.size = 0.1, order =TRUE)
@@ -60,7 +66,6 @@ FeaturePlot(myObject , features =genes14, reduction = "umap", cols = c("lightgre
 FeaturePlot(myObject , features =genes15, reduction = "umap", cols = c("lightgrey", "red"), pt.size = 0.1,order =TRUE)
 FeaturePlot(myObject , features =genes16, reduction = "umap", cols = c("lightgrey", "red"), pt.size = 0.1,order =TRUE)
 dev.off()
-
 
 
 

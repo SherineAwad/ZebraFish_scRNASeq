@@ -12,11 +12,11 @@ library(AcidGenomes)
 library(rtracklayer)
 
 args <- commandArgs(trailingOnly = TRUE)
-mysample <- args[1]
+myRDS <- args[1]
 
-#Run on merged 
-myRDS <- paste(mysample, "_filtered.rds", sep="")
-myRDS
+split_string <- strsplit(myRDS, "_")[[1]]
+mysample <- split_string[1]
+print(mysample)
 
 myObject <- readRDS(myRDS)
 

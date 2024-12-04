@@ -30,69 +30,67 @@ myObject <- readRDS(myRDS)
 
 myObject <- RenameIdents(
   object = myObject,
-  "1" = "MG", 
-  "2" = "MG", 
-  "3" = "MG", 
-  "4" = "MG", 
-  "6" = "MG", 
-  "8" = "MG", 
-  "10" = "MG", 
-  "21" = "MG", 
-  "32" = "MG", 
-  "46" = "MG", 
-
   "0" = "Rod", 
-  "5" = "Rod", 
+  "3" = "Rod", 
   "9" =  "Rod",
-  "23" = "Rod",
-  "30" = "Rod",
-  "31" = "Rod", 
-  "37" = "Rod", 
-  
-  "13" = "Cone", 
-  "33" = "Cone",
- 
-  "7" = "HC", 
-  "17" = "HC",
-  "34" = "HC", 
-  "44" = "HC", 
+  "25" = "Rod",
+  "31" = "Rod",
+  "34" = "Rod", 
+  "41" = "Rod", 
 
-  "12" = "BC", 
-  "18"  = "BC",
-  "29"  = "BC",
-  "38"  = "BC",
-  "40"  = "BC",
-  "49"  = "BC",
+  "13" = "BC", 
+  "17"  = "BC",
+  "30"  = "BC",
+  "36"  = "BC",
+  "48"  = "BC",
 
-  "14" = "RGC", 
-  "45" = "RGC", 
+  "44" = "RGC", 
+  "26" = "RGC", 
+  "38" = "RGC", 
  
-  "24" = "AC", 
-  "27" = "AC",
+  "23" = "AC", 
   "28" = "AC",
+  "29" = "AC",
   "35" = "AC",
-  "39" = "AC",
-  "41" = "AC",
-  "42" = "AC",
+  "37" = "AC",
+  "40" = "AC",
   "43" = "AC",
-  "47" = "AC",
+  "45" = "AC",
+  "46" = "AC", 
+  "49" = "AC", 
   "50" = "AC",
-  "51" = "AC",
 
-  "48" = "Microglia",
-  "11" = "MG", 
-
-  "15" = "Progenitors", 
-  "16" = "Progenitors",
+  "12" = "Progenitors", 
+  "18" = "Progenitors",
   "19" = "Progenitors",
   "20" = "Progenitors",
-  "22" = "Progenitors",
-  "25" = "Progenitors", 
-  "26" = "Progenitors",
-  "36" = "Progenitors") 
+  "21" = "Progenitors",
+  "24" = "Progenitors", 
+  "27" = "Progenitors",
+  "1" = "MG", 
+  "2" = "MG", 
+  "4"  = "MG",
+  "5"  = "MG",
+  "6" = "MG",
+  "8" = "MG",
+  "10" = "MG",
+  "11" = "MG",
+  "15"  = "MG",
+  "22"  = "MG",
+  "47" = "MG",
+  
+  "7" = "HC", 
+  "16" = "HC",
+  "33" = "HC",
+  "42" = "HC",
+
+
+  "14" = "Cones",
+  "32"  = "Cones",
+  "39"  = "Cones") 
 
 figure_name <- ""
-figure_name <- paste(mysample, "_AnnotatedUMAP.pdf", sep="")
+figure_name <- paste(mysample, "_SAnnotatedUMAP.pdf", sep="")
 pdf(file =figure_name, width =12)
 DimPlot(myObject, reduction = "umap", group.by = "orig.ident",  repel = TRUE) + ggtitle("UMAP")
 DimPlot(myObject, reduction = "umap", group.by = "sample",  repel = TRUE) + ggtitle("UMAP")
@@ -100,6 +98,6 @@ DimPlot(myObject, reduction = "umap", label=TRUE, repel = TRUE) + ggtitle("UMAP"
 dev.off()
 
 
-myRDS <- paste(mysample, "_annotated.rds", sep="")
+myRDS <- paste(mysample, "_Sannotated.rds", sep="")
 saveRDS(myObject, file = myRDS)
 
