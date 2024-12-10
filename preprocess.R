@@ -21,6 +21,12 @@ mysample
 myh5
 myRDS
 
+#annotation <- makeGRangesFromGff("Danio_rerio.GRCz11.105.gtf", level = c("genes", "transcripts"))
+#unique(seqnames(annotation))
+
+#lapply(counts, dim)
+#lapply(counts, class)
+
 counts <- Read10X_h5(myh5)
 
 # create a Seurat object containing the RNA adata

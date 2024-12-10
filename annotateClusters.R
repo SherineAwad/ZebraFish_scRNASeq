@@ -23,73 +23,88 @@ print(mysample)
 
 myObject <- readRDS(myRDS)
 
-#head(myObject) 
-#levels(myObject)
-#head(Idents(myObject) 
-
 
 myObject <- RenameIdents(
   object = myObject,
-  "1" = "MG", 
+  "0" = "MG", 
   "2" = "MG", 
-  "3" = "MG", 
   "4" = "MG", 
+  "5" = "MG", 
   "6" = "MG", 
-  "8" = "MG", 
-  "10" = "MG", 
-  "21" = "MG", 
+  "8" = "MG",
+  "9" = "MG", 
+  "11" = "MG", 
+  "15" = "MG", 
+  "22" = "MG", 
+  "25" = "MG", 
+  "28" = "MG", 
   "32" = "MG", 
+  "35" = "MG", 
   "46" = "MG", 
+  "57" = "MG", 
 
-  "0" = "Rod", 
-  "5" = "Rod", 
-  "9" =  "Rod",
-  "23" = "Rod",
-  "30" = "Rod",
-  "31" = "Rod", 
-  "37" = "Rod", 
-  
-  "13" = "Cone", 
-  "33" = "Cone",
- 
-  "7" = "HC", 
-  "17" = "HC",
-  "34" = "HC", 
-  "44" = "HC", 
+  "1" = "Rod", 
+  "3" = "Rod", 
+  "7" = "Rod", 
+  "30" = "Rod",  
+  "38" = "Rod",  
+  "49" = "Rod",  
+  "53" = "Rod",  
+  "10" = "Rod", 
 
-  "12" = "BC", 
-  "18"  = "BC",
-  "29"  = "BC",
-  "38"  = "BC",
-  "40"  = "BC",
-  "49"  = "BC",
+  "21" = "Cone", 
+  "37" = "Cone",
+  "55" = "Cone",
 
-  "14" = "RGC", 
-  "45" = "RGC", 
- 
-  "24" = "AC", 
+
+  "12" = "HC", 
+  "29" = "HC",
+  "39" = "HC", 
+  "40" = "HC", 
+  "43" = "HC", 
+  "54" = "HC", 
+  "59" = "HC", 
+
+  "47" = "BC", 
+  "14"  = "BC",
+  "13"  = "BC",
+  "14"  = "BC", 
+  "36"  = "BC", 
+  "44"  = "BC", 
+  "61"  = "BC", 
+
+
+
+  "34" = "RGC", 
+  "23" = "RGC", 
+
+  "26" = "AC", 
   "27" = "AC",
-  "28" = "AC",
-  "35" = "AC",
-  "39" = "AC",
-  "41" = "AC",
-  "42" = "AC",
-  "43" = "AC",
-  "47" = "AC",
+  "31" = "AC", 
+  "45" = "AC",
   "50" = "AC",
   "51" = "AC",
+  "52" = "AC", 
+  "56" = "AC", 
+  "60" = "AC",
+  "63" = "AC", 
+  "58" = "AC", 
+  "33" = "AC", 
+  "62" = "AC", 
 
-  "48" = "Microglia",
-  "11" = "MG", 
 
-  "15" = "Progenitors", 
-  "16" = "Progenitors",
-  "19" = "Progenitors",
-  "20" = "Progenitors",
-  "22" = "Progenitors",
-  "25" = "Progenitors", 
-  "26" = "Progenitors",
-  "36" = "Progenitors") 
+  "64" = "Microglia",
+
+  "16" = "Progenitors", 
+  "17" = "Progenitors",
+  "18" = "Progenitors",
+  "19" = "Progenitors", 
+  "20" = "Progenitors", 
+  "24" = "Progenitors", 
+  "41" = "Progenitors", 
+  "42" = "Progenitors", 
+  "48" = "Progenitors") 
+
 
 figure_name <- ""
 figure_name <- paste(mysample, "_AnnotatedUMAP.pdf", sep="")

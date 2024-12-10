@@ -15,7 +15,7 @@ nCount1 = 1200
 nCount2 = 30000
 nfeatures1 = 800
 nfeatures2 = 6000
-mt = 20
+mt = 25
 
 args <- commandArgs(trailingOnly = TRUE)
 myRDS <- args[1]
@@ -23,6 +23,11 @@ myRDS <- args[1]
 split_string <- strsplit(myRDS, "_")[[1]]
 mysample <- split_string[1]
 print(mysample)
+
+
+myObject <- readRDS(myRDS)
+
+DefaultAssay(myObject) <- "RNA"
 
 
 myObject <- subset(myObject, subset = nFeature_RNA > nfeatures1 & nFeature_RNA < nfeatures2 & nCount_RNA > nCount1 & nCount_RNA < nCount2 & percent.mt < mt)

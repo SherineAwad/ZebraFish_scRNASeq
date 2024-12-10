@@ -22,23 +22,22 @@ myObject <- readRDS(myRDS)
 
 DefaultAssay(myObject) <- "RNA"
 
+
+all.genes <- rownames(myObject)
+myObject<- NormalizeData(myObject)
+myObject <- FindVariableFeatures(myObject, selection.method = "vst", nfeatures = 2000)
+myObject<- ScaleData(myObject, features = all.genes)
+myObject <- RunPCA(myObject, features = VariableFeatures(object = myObject))
+myObject <- FindNeighbors(myObject, dims = 1:15)
+myObject <- FindClusters(myObject, resolution = 3)
+myObject <- RunUMAP(myObject, metric = "correlation",  n.components = 2L, dims = 1:15)
+
 myObject@meta.data[,'sample']<-apply(as.matrix(rownames(myObject@meta.data)), 1, function(X1){X2<-strsplit(X1,'-')[[1]][2];})
 myObject@meta.data[,'sample'] <- recode(myObject@meta.data[,'sample'], "1" = "S1", "2" = "S2")
 
 
-all.genes <- rownames(myObject)
-myObject <- NormalizeData(myObject)
-myObject <- FindVariableFeatures(myObject)
-myObject <- ScaleData(myObject, features = all.genes)
-myObject <- RunPCA(myObject)
-myObject <- FindNeighbors(myObject, dims = 1:15)
-myObject <- FindClusters(myObject, resolution = 2.0)
-myObject <- RunUMAP( myObject, dims = 1:15)
-
-
-
 figure_name <- ""
-figure_name <- paste(mysample, "_UMAPdim15.pdf", sep="")
+figure_name <- paste(mysample, "_UMAP.pdf", sep="")
 pdf(file =figure_name, width =12)
 DimPlot(myObject, reduction = "umap", group.by = "orig.ident",  repel = TRUE) + ggtitle("UMAP")
 DimPlot(myObject, reduction = "umap", group.by = "sample",  repel = TRUE) + ggtitle("UMAP")
