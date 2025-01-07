@@ -36,9 +36,10 @@ print("===============================")
 table(myObject@meta.data$sample, myObject@active.ident)
 #Rod   BC  RGC   AC Progenitors   HC   MG Cones
 
+
 df <- data.frame(CellType = c("Rod","BC","RGC","AC","Progenitors","HC","MG","Cones"), 
-S1=c(2054,657,190,452,1908,757,4944,414), 
-S2=c(2482,1201,537,1871,2157,1160,5805,565)) 
+S1=c(2224,657,190,452,1738,757,4944,414), 
+S2=c(2673,1201,537,1871,1966,1160,5805,565)) 
 library(tidyr)
 df_long <- df %>% gather(key = "Condition", value = "Value", -CellType)
 df_percent <- df_long %>%

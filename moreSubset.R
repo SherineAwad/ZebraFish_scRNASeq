@@ -27,9 +27,9 @@ cell_values <- c(cell)
 mySubset <- subset(myObject, idents = cell_values, invert = FALSE)
 head(mySubset)
 
-mySubset <- FindNeighbors(mySubset, dims = 1:15)
-mySubset <- FindClusters(mySubset, resolution = 3.0)
-mySubset <- RunUMAP(object = mySubset, dims = 1:15)
+mySubset <- FindNeighbors(mySubset, dims = 1:20)
+mySubset <- FindClusters(mySubset, resolution = 1.0)
+mySubset <- RunUMAP(object = mySubset, dims = 1:20)
 
 table(mySubset@active.ident)
 table(mySubset@meta.data[,'sample'])

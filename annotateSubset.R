@@ -35,6 +35,8 @@ myObject <- RenameIdents(
   "11" =  "Rod",
   "24" = "Rod",
   "48" = "Rod", 
+  "29" = "Rod", 
+  "49" = "Rod",
 
   "13" = "BC", 
   "15"  = "BC",
@@ -64,8 +66,6 @@ myObject <- RenameIdents(
   "21" = "Progenitors",
   "22" = "Progenitors", 
   "30" = "Progenitors",
-  "49" = "Progenitors",
-  "29" = "Progenitors",
   
   "7" = "HC", 
   "19" = "HC",
