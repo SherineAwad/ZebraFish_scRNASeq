@@ -5,8 +5,8 @@ with open(config['SAMPLES']) as fp:
 
 rule all:
          input:
-            expand("{sample}_pre.rds", sample = samples),
-            expand("{sample}_filter.rds", sample = samples), 
+            expand("{sample}_preprocessed.rds", sample = samples),
+            expand("{sample}_filtered.rds", sample = samples), 
             expand("{all}.rds", all =config['ALL']),
             expand("{all}_analysed.rds", all =config['ALL']),
             expand("{all}_annotated.rds", all =config['ALL']),
@@ -17,7 +17,7 @@ rule preprocess:
        params: 
             "{sample}" 
        output: 
-          "{sample}_pre.rds",
+          "{sample}_preprocessed.rds",
        shell: 
            """
            Rscript preprocess.R {params} 
@@ -25,9 +25,9 @@ rule preprocess:
 
 rule filter: 
      input: 
-         "{sample}_pre.rds",
+         "{sample}_preprocessed.rds",
      output: 
-         "{sample}_filter.rds"
+         "{sample}_filtered.rds"
      params: 
          nCount1 = config['nCount1'],
          nCount2 = config['nCount2'], 
@@ -42,7 +42,7 @@ rule filter:
 
 rule merge: 
      input: 
-        expand("{sample}_filter.rds", sample = samples)
+        expand("{sample}_filtered.rds", sample = samples)
      params: 
         all =config['ALL']   
      output: 

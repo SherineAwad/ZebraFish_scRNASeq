@@ -1,9 +1,9 @@
 #---------------------------------------------------
 #General Parameters 
 #---------------------------------------------------
-ALL: "Zebrafishes"
-SAMPLES: "samples.tsv"
-ANNOTATIONFILE: "annotations.txt" 
+ALL: "ZTH115"
+SAMPLES: "ZTH15samples.tsv"
+ANNOTATIONFILE: "ZTH115annotations.txt" 
 nCount1: 1200
 nCount2: 30000
 nfeatures1: 800
