@@ -1,0 +1,9 @@
+#---------------------------------------------------
+#General Parameters 
+#---------------------------------------------------
+ALL: "Zebrafishes"
+SAMPLES: "samples.tsv"
+SELECTION: ['Zebra' 'TH115']
+SNAME: "ZTH15"
+annotation: "annotations.txt" 
+

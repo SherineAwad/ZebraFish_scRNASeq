@@ -26,25 +26,23 @@ DefaultAssay(myObject) <- "RNA"
 
 all.genes <- rownames(myObject)
 myObject<- NormalizeData(myObject)
-myObject <- FindVariableFeatures(myObject, selection.method = "vst", nfeatures = 2000)
+myObject <- FindVariableFeatures(myObject, nfeatures = 2000)
 myObject<- ScaleData(myObject, features = all.genes)
 myObject <- RunPCA(myObject, features = VariableFeatures(object = myObject))
 myObject <- FindNeighbors(myObject, dims = 1:15)
 myObject <- FindClusters(myObject, resolution = 3)
-myObject <- RunUMAP(myObject, metric = "correlation",  n.components = 2L, dims = 1:15,reduction.name = "umap")
+myObject <- RunUMAP(myObject, dims = 1:15,reduction.name = "umap")
 
 myRDS <- paste(mysample, "_analysed.rds", sep="")
 saveRDS(myObject, file = myRDS)
 
 
 
-if (FALSE)
-{
 figure_name <- ""
 figure_name <- paste(mysample, "_UMAP.pdf", sep="")
 pdf(file =figure_name, width =12)
 DimPlot(myObject, reduction = "umap", group.by = "orig.ident",  repel = TRUE) + ggtitle("UMAP")
 DimPlot(myObject, reduction = "umap", label=TRUE, repel = TRUE) + ggtitle("UMAP")
+
 dev.off()
 
-}
