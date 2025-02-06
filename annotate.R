@@ -22,6 +22,15 @@ annotation_vector <- setNames(as.character(annotations$label), as.character(anno
 # Apply dynamic renaming
 myObject <- RenameIdents(myObject, annotation_vector)
 
+
+figure_name <- ""
+figure_name <- paste(mysample, "_annotatedUMAP.pdf", sep="")
+pdf(file =figure_name, width =12)
+DimPlot(myObject, reduction = "umap", group.by = "orig.ident",  repel = TRUE) + ggtitle("UMAP")
+DimPlot(myObject, reduction = "umap", group.by = "sample",  repel = TRUE) + ggtitle("UMAP")
+DimPlot(myObject, reduction = "umap", label=TRUE, repel = TRUE) + ggtitle("UMAP")
+dev.off()
+
 # Save updated object
 saveRDS(myObject, file = paste0(mysample, "_annotated.rds"))
 
