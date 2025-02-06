@@ -10,8 +10,6 @@ rule all:
             expand("{all}.rds", all =config['ALL']),
             expand("{all}_analysed.rds", all =config['ALL']),
             expand("{all}_annotated.rds", all =config['ALL']),
-            #expand("{selection}_analysed.rds", selection = config['SNAME']), 
-            #expand("{selection}_annotated.rds", selection = config['SNAME']),
 
 rule preprocess: 
        input:  
@@ -60,12 +58,13 @@ rule analyse:
 
 rule annotate: 
     input: 
-      expand("{all}_analysed.rds", all =config['ALL']) 
+      expand("{all}_analysed.rds", all =config['ALL']),
+      annotations = config['ANNOTAIONFILE'] 
     output: 
        expand("{all}_annotated.rds", all =config['ALL'])
     shell: 
        """
-       Rscript annotateClusters.R {input}   
+       Rscript annotate.R {input[0]}  {input[1]}   
        """ 
 
 

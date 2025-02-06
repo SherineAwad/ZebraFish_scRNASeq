@@ -1,11 +1,14 @@
 library(Seurat)
 library(dplyr)
 
-# Read command-line arguments
 args <- commandArgs(trailingOnly = TRUE)
 
-myRDS <- args[1]   # First argument: input Seurat object file
-annotation_file <- args[2]  # Second argument: file with annotations
+myRDS <- args[1]
+annotation_file <- args[2] 
+
+split_string <- strsplit(myRDS, "_")[[1]]
+mysample <- split_string[1]
+print(mysample)
 
 # Read Seurat object
 myObject <- readRDS(myRDS)
@@ -20,7 +23,6 @@ annotation_vector <- setNames(as.character(annotations$label), as.character(anno
 myObject <- RenameIdents(myObject, annotation_vector)
 
 # Save updated object
-saveRDS(myObject, file = paste0("annotated_", myRDS))
-
+saveRDS(myObject, file = paste0(mysample, "_annotated.rds"))
 
 
