@@ -11,14 +11,15 @@ set.seed(1234)
 library(AcidGenomes)
 library(rtracklayer)
 
-nCount1 = 1200
-nCount2 = 30000
-nfeatures1 = 800
-nfeatures2 = 6000
-mt = 25
 
 args <- commandArgs(trailingOnly = TRUE)
 myRDS <- args[1]
+
+nCount1 = args[2] 
+nCount2 = args[3]
+nfeatures1 = args[4]
+nfeatures2 = args[5]
+mt = args[6] 
 
 split_string <- strsplit(myRDS, "_")[[1]]
 mysample <- split_string[1]
